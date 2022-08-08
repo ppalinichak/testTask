@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+
+
+        <h2>{{ clicks }}</h2>
+
+        <h2>{{ conversions }}</h2>
+
+        {{ timeperiod }} |
+
+        {{ campaign_id }} |
+
+        {{ buyer_id }}
+        <br>
+
+        <form method="post">
+            {% csrf_token %}
+            From date: <br>
+            {{ form.start_day }}<br>
+            To date: <br>
+            {{ form.finish_day }}<br>
+            Campaign id: <br>
+            {{ form.campaign_id }}<br>
+            Buyer id: <br>
+            {{ form.buyer_id }}<br>
+            <button type="submit">Refresh data</button>
+
+            <span>{{ error }}</span>
+        </form>
+    </div>
+{% endblock content %}
